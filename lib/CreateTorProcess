@@ -37,7 +37,7 @@ function CreateTorProcess() {
   # We save the hash of the password to the configuration file.
   # shellcheck disable=SC2154
   cp /multitor/templates/tor.cfg ${_torrc_config}
-  echo "HashedControlPassword ${_pass_hash}" > "${_torrc_config}"
+  echo "HashedControlPassword ${_pass_hash}" >> "${_torrc_config}"
   _kstate="$?"
 
   if [[ $_kstate -eq 0 ]] ; then
