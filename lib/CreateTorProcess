@@ -19,7 +19,7 @@ function CreateTorProcess() {
 
   local _FUNCTION_ID="CreateTorProcess"
   local _STATE=0
-
+  local listen_address="0.0.0.0"
   local _arg_uname="$1"
   local _arg_socks="$2"
   local _arg_control="$3"
@@ -76,7 +76,7 @@ function CreateTorProcess() {
   sudo -u "$_arg_uname" tor -f "${_torrc_config}" \
        --RunAsDaemon 1 \
        --CookieAuthentication 0 \
-       --SocksPort  "0.0.0.0:${_arg_socks}" \
+       --SocksPort  "${listen_address}:${_arg_socks}" \
        --ControlPort "$_arg_control" \
        --PidFile "${_proc_dir}/${_arg_socks}.pid" \
        --DataDirectory "${_proc_dir}" \
