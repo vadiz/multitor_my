@@ -76,7 +76,7 @@ function CreateTorProcess() {
   sudo -u "$_arg_uname" tor -f "${_torrc_config}" \
        --RunAsDaemon 1 \
        --CookieAuthentication 0 \
-       --SocksPort "$_arg_socks" \
+       --SocksPort  0.0.0.0:"$_arg_socks" \
        --ControlPort "$_arg_control" \
        --PidFile "${_proc_dir}/${_arg_socks}.pid" \
        --DataDirectory "${_proc_dir}" \
