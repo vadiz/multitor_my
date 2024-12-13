@@ -71,13 +71,12 @@ function CreateTorProcess() {
       "not changed permission and owner correctly"
 
   fi
-
+  #--SocksPort  "${listen_address}:${_arg_socks}" \
   # shellcheck disable=SC2024
   sudo -u "$_arg_uname" tor -f "${_torrc_config}" \
        --RunAsDaemon 1 \
        --CookieAuthentication 0 \
-       --SocksPort "$_arg_socks" \
-       #--SocksPort  "${listen_address}:${_arg_socks}" \
+       --SocksPort "$_arg_socks" \       
        --ControlPort "$_arg_control" \
        --PidFile "${_proc_dir}/${_arg_socks}.pid" \
        --DataDirectory "${_proc_dir}" \
